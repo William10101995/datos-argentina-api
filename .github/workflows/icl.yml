@@ -1,0 +1,33 @@
+name: Scraper ICL
+
+on:
+  schedule:
+    - cron: "0 2 * * *" # todos los días 02:00 UTC
+  workflow_dispatch:
+
+jobs:
+  icl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run scraper ICL
+        run: |
+          python scrapers/scraper_icl.py
+
+      - name: Commit data
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add data/icl
+          git commit -m "chore: update ICL" || echo "No changes"
+          git push

@@ -1,0 +1,33 @@
+name: Scraper IPC
+
+on:
+  schedule:
+    - cron: "0 5 14 * *" # día 14 de cada mes
+  workflow_dispatch:
+
+jobs:
+  ipc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run scraper IPC
+        run: |
+          python scrapers/scraper_ipc.py
+
+      - name: Commit data
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add data/ipc
+          git commit -m "chore: update IPC" || echo "No changes"
+          git push
