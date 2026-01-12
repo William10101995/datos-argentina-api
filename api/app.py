@@ -13,7 +13,7 @@ def create_app():
 
     register_routes(app)
 
-    @app.route("/health", methods=["GET"])
+    @app.route("/", methods=["GET"])
     def health():
         return {"status": "ok"}
 
