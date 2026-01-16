@@ -82,8 +82,8 @@ GET /api/ipc
 Los datos se mantienen actualizados mediante **GitHub Actions (cron jobs)**:
 
 - 🛢️ Combustibles: cada **15 días**
-- 📈 ICL: **todos los días a las 23:00**
-- 📉 IPC: **día 14 de cada mes**
+- 📈 ICL: **todos los días a las 09:00, 10:00, 11:00 y 12:00**
+- 📉 IPC: **día 10, 11, 12 y 13 de cada mes**
 
 ## 🧪 Desarrollo local
 

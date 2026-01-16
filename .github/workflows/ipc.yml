@@ -5,7 +5,11 @@ permissions:
 
 on:
   schedule:
-    - cron: "0 5 14 * *" # día 14 de cada mes
+    - cron: "0 5 10 * *"
+    - cron: "0 5 11 * *"
+    - cron: "0 5 12 * *"
+    - cron: "0 5 13 * *"
+    - cron: "0 5 14 * *"
   workflow_dispatch:
 
 jobs:
